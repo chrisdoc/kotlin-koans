@@ -1,7 +1,9 @@
 package v_builders
 
 import util.TODO
+import java.beans.Expression
 import java.util.*
+import kotlin.collections.HashMap
 
 fun buildStringExample(): String {
     fun buildString(build: StringBuilder.() -> Unit): String {
@@ -17,6 +19,7 @@ fun buildStringExample(): String {
             append(i)
         }
     }
+
 }
 
 fun todoTask37(): Nothing = TODO(
@@ -28,12 +31,17 @@ fun todoTask37(): Nothing = TODO(
     """
 )
 
+fun buildMap(expression: MutableMap<Int, String>.() -> Unit): Map<Int, String> {
+
+    return mutableMapOf<Int, String>().apply { expression() }
+}
+
 fun task37(): Map<Int, String> {
-    todoTask37()
-//    return buildMap {
-//        put(0, "0")
-//        for (i in 1..10) {
-//            put(i, "$i")
-//        }
-//    }
+
+    return buildMap {
+        put(0, "0")
+        for (i in 1..10) {
+            put(i, "$i")
+        }
+    }
 }
