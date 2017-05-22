@@ -12,14 +12,15 @@ fun todoTask3(): Nothing = TODO(
         Uncomment the commented code and make it compile.
     """,
     documentation = doc2(),
-    references = { name: String -> JavaCode3().foo(name); foo(name) })
+    references = { name: String -> JavaCode3().foo(name); foo(name, 1, true) })
 
-fun foo(name: String): String = todoTask3()
+fun foo(name: String, number: Int = 42, toUpperCase: Boolean = false): String {
+    return (if (toUpperCase) name.toUpperCase() else name) + number
+}
 
 fun task3(): String {
-    todoTask3()
-//    return (foo("a") +
-//            foo("b", number = 1) +
-//            foo("c", toUpperCase = true) +
-//            foo(name = "d", number = 2, toUpperCase = true))
+    return (foo("a") +
+            foo("b", number = 1) +
+            foo("c", toUpperCase = true) +
+            foo(name = "d", number = 2, toUpperCase = true))
 }
